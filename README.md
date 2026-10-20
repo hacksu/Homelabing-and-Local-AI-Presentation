@@ -1,8 +1,8 @@
-# HacKSU Presentation Template
+# Homelabbing and Local AI
 
-A slide deck template to use for HacKSU workshops.
+A HacKSU workshop deck on the basics of homelabbing, using a real homelab as the running example. Built on the HacKSU presentation template.
 
-```
+```text
 static/
   app.js                  slide navigation and particle background
   style.css               HacKSU deck design
@@ -12,23 +12,30 @@ templates/
   index.html              slide order
   notes.html              speaker notes and run of show
 app.py                    base app, three routes: deck, notes, logo
+OUTLINE.md                slide-by-slide content outline
+pyproject.toml            project metadata and dependencies (uv)
 README.md                 documentation
-requirements.txt          dependencies
 ```
 
-A Flask app on port 5174.
+A Flask app on port 5174, managed with [uv](https://docs.astral.sh/uv/).
 
-Install dependencies: 
+Install uv (once):
 
-`pip install -r requirements.txt`
+`powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"` on Windows, or `curl -LsSf https://astral.sh/uv/install.sh | sh` on macOS/Linux.
+
+Install dependencies:
+
+`uv sync`
 
 To run the app:
 
-`python app.py` or `flask app`
+`uv run app.py`
 
 `/` is the deck, navigated with arrows, space, or the dots.
 
 `/notes` is the speaker notes with a minute-by-minute run of show.
+
+To add a dependency, use `uv add <package>` rather than editing `pyproject.toml` by hand, so `uv.lock` stays in sync.
 
 To change the order of slides, navigate to `templates/index.html`, and reorder using `{% include %}`
 
