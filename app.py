@@ -22,5 +22,5 @@ def logo():
 
 
 if __name__ == '__main__':
-    print("Starting web dev presentation at http://0.0.0.0:5174")
+    print("Starting homelab and local AI presentation at http://0.0.0.0:5174")
     app.run(debug=True, host='0.0.0.0', port=5174)

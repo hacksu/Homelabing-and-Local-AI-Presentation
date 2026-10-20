@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Speaker Notes - How the Web Works</title>
+  <title>Speaker Notes - Homelabbing and Local AI</title>
   <style>
     :root {
       --green: #35C982;
@@ -119,16 +119,24 @@
 <header>
   <div>
     <h1>SPEAKER NOTES</h1>
-    <p style="margin-top:4px;">Title - HacKSU Workshop - 40 minutes</p>
+    <p style="margin-top:4px;">Homelabbing and Local AI - HacKSU Workshop - 60 minutes</p>
   </div>
   <p>print as reference &nbsp;·&nbsp; Ctrl+P</p>
 </header>
 
 <div class="runsheet">
-  <h2>Run of show - 40 minutes</h2>
+  <h2>Run of show - Ian's half, 25 minutes</h2>
   <table>
-    <tr><td class="time">&lt;range&gt;</td><td class="mins">min</td><td> Slide notes go here. <strong>Important notes go here.</strong></td></tr>
-    <tr class="break"><td colspan="3">The deck is a reference, not the lesson.</td></tr>
+    <tr><td class="time">0:00-1:00</td><td class="mins">1</td><td>Title. Introduce both of us and the split.</td></tr>
+    <tr><td class="time">1:00-3:00</td><td class="mins">2</td><td>What is a homelab. <strong>Ask who has run a game server.</strong></td></tr>
+    <tr><td class="time">3:00-5:00</td><td class="mins">2</td><td>Why have one.</td></tr>
+    <tr><td class="time">5:00-9:00</td><td class="mins">4</td><td>My lab. <strong>The anchor for everything after.</strong></td></tr>
+    <tr><td class="time">9:00-12:00</td><td class="mins">3</td><td>Where to start: hardware tiers.</td></tr>
+    <tr><td class="time">12:00-15:00</td><td class="mins">3</td><td>Bare metal vs hypervisor.</td></tr>
+    <tr><td class="time">15:00-19:00</td><td class="mins">4</td><td>Networking and remote access. <strong>The safety slide; don't rush it.</strong></td></tr>
+    <tr><td class="time">19:00-22:00</td><td class="mins">3</td><td>Storage, backups, UPS.</td></tr>
+    <tr><td class="time">22:00-25:00</td><td class="mins">3</td><td>Now host stuff: walk the VM list.</td></tr>
+    <tr class="break"><td colspan="3">25:00 - handoff to Meheraj for local AI. Questions for both at the end.</td></tr>
   </table>
 </div>
 
@@ -136,22 +144,111 @@
   <div class="num"><span>Before you start</span><span>setup</span></div>
   <h2>Setup - do this before anyone arrives</h2>
   <ul>
-    <li>Point 1</li>
-    <li>Point 2</li>
-    <li>Point 3</li>
+    <li>Run <code>uv run app.py</code> from WSL and open the deck full screen</li>
+    <li>Check that <code>static/images/poster.png</code> is in place</li>
+    <li>Optional: have the Proxmox web UI open over Tailscale for a live look during slide 08</li>
   </ul>
-  <div class="demo"><strong>The shape of this session:</strong> notes</div>
+  <div class="demo"><strong>The shape of this session:</strong> two halves. Ian covers homelabbing with his own lab as the example; Meheraj picks up with local AI on top of it.</div>
 </div>
 
 <div class="slide-note">
-  <div class="num"><span>Slide #</span><span>&lt;timestamp&gt;</span></div>
+  <div class="num"><span>Slide 00</span><span>0:00</span></div>
   <h2>Title</h2>
   <ul>
-    <li>Point 1</li>
-    <li>Point 2</li>
-    <li>Point 3</li>
+    <li>Introduce yourselves: Ian on homelabbing, Meheraj on local AI</li>
+    <li>Set expectations: no hardware needed to follow along; this is about how to start</li>
   </ul>
-  <div class="demo"><strong>Demo:</strong> notes</div>
+</div>
+
+<div class="slide-note">
+  <div class="num"><span>Slide 01</span><span>1:00</span></div>
+  <h2>What is a homelab?</h2>
+  <ul>
+    <li>Any hardware at home you use to host services, learn, and experiment</li>
+    <li>Size doesn't matter: one laptop counts</li>
+    <li>Ask the room: who has run a Minecraft server? They've already homelabbed</li>
+  </ul>
+</div>
+
+<div class="slide-note">
+  <div class="num"><span>Slide 02</span><span>3:00</span></div>
+  <h2>Why should I have one?</h2>
+  <ul>
+    <li>Hands-on experience: things break and you learn by fixing them</li>
+    <li>Skills employers ask about: Linux, networking, containers</li>
+    <li>Own your data, and replace some subscriptions</li>
+  </ul>
+</div>
+
+<div class="slide-note">
+  <div class="num"><span>Slide 03</span><span>5:00</span></div>
+  <h2>My lab at a glance</h2>
+  <ul>
+    <li>Dell R740 for $460: 32 cores, 192 GB RAM, 10 TB</li>
+    <li>Point out what's in the photo; mention the router, switch, NAS, and UPS that aren't clearly visible</li>
+    <li>$1,549 total, built up over time, not all at once</li>
+  </ul>
+</div>
+
+<div class="slide-note">
+  <div class="num"><span>Slide 04</span><span>9:00</span></div>
+  <h2>Where can anybody start?</h2>
+  <ul>
+    <li>Free tier: whatever old machine you have</li>
+    <li>My story: OptiPlex from an office sale, then the R740 from Facebook Marketplace</li>
+    <li>Power: it runs 24/7, so an enterprise server costs real money on the electric bill</li>
+  </ul>
+</div>
+
+<div class="slide-note">
+  <div class="num"><span>Slide 05</span><span>12:00</span></div>
+  <h2>Bare metal vs hypervisor</h2>
+  <ul>
+    <li>Bare metal: simplest, a good first step</li>
+    <li>Hypervisor: many VMs on one box, snapshots let you undo mistakes</li>
+    <li>Proxmox is free; the cost is RAM and learning time</li>
+  </ul>
+</div>
+
+<div class="slide-note">
+  <div class="num"><span>Slide 06</span><span>15:00</span></div>
+  <h2>Networking and remote access</h2>
+  <ul>
+    <li>Static IP + DHCP reservation so the server's address never moves</li>
+    <li>Port forwarding: anything exposed gets scanned by bots within minutes; never expose SSH, RDP, SMB, databases, or Proxmox</li>
+    <li>Web is the usual exception, through one reverse proxy (my HAProxy)</li>
+    <li>Tailscale / WireGuard / Cloudflare Tunnel avoid forwarding at all</li>
+  </ul>
+  <div class="demo"><strong>My lab:</strong> Tailscale exit node with Pi-hole DNS, so I get ad blocking on my phone anywhere.</div>
+</div>
+
+<div class="slide-note">
+  <div class="num"><span>Slide 07</span><span>19:00</span></div>
+  <h2>Extensions and add-ons</h2>
+  <ul>
+    <li>Storage: a NAS, or the server's RAID controller</li>
+    <li>RAID is not a backup: it doesn't save you from deleting a file or ransomware. 3-2-1 rule</li>
+    <li>UPS: rides out outages and gives time for a clean shutdown; Proxmox start/shutdown order decides what goes first</li>
+  </ul>
+</div>
+
+<div class="slide-note">
+  <div class="num"><span>Slide 08</span><span>22:00</span></div>
+  <h2>Now host stuff</h2>
+  <ul>
+    <li>Run through the categories on the left</li>
+    <li>Walk the VM list: DNS and Pi-hole start first, web server and HAProxy last</li>
+    <li>Point out the Ollama host near the bottom as the setup for the handoff</li>
+  </ul>
+</div>
+
+<div class="slide-note">
+  <div class="num"><span>Slide 09</span><span>25:00</span></div>
+  <h2>Handoff</h2>
+  <ul>
+    <li>"That Ollama host is where Meheraj takes over"</li>
+  </ul>
+  <div class="demo switch"><strong>Switch:</strong> hand over to Meheraj for local AI.</div>
 </div>
 
 </body>

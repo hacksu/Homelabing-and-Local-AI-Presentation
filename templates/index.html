@@ -1,12 +1,18 @@
 {% extends "base.html" %}
 {% block slides %}
-  {% include "slides/00_title_slide.html" %}
-  {% include "slides/01_three_col_layout.html" %}
-  {% include "slides/02_two_col_layout.html" %}
-  {% include "slides/03_two_col_boxes.html" %}
-  {% include "slides/04_two_box_layout.html" %}
-  {% include "slides/05_three_col_boxes.html" %}
-  {% include "slides/06_single_content.html" %}
-  {% include "slides/07_single_content_alt.html" %}
-  {% include "slides/08_closing_slide.html" %}
+  {# Homelab half (Ian) #}
+  {% include "slides/homelab/00_title.html" %}
+  {% include "slides/homelab/01_what_is_a_homelab.html" %}
+  {% include "slides/homelab/02_why_have_one.html" %}
+  {% include "slides/homelab/03_my_lab.html" %}
+  {% include "slides/homelab/04_where_to_start.html" %}
+  {% include "slides/homelab/05_os_layer.html" %}
+  {% include "slides/homelab/06_networking.html" %}
+  {% include "slides/homelab/07_addons.html" %}
+  {% include "slides/homelab/08_host_stuff.html" %}
+  {% include "slides/homelab/09_handoff.html" %}
+
+  {# Local AI half (Meheraj): add includes from slides/ai/ here #}
+
+  {% include "slides/closing.html" %}
 {% endblock %}

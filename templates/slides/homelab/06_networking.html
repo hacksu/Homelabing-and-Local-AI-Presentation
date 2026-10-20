@@ -1,0 +1,41 @@
+<div class="slide" id="slide-7">
+  <div class="slide-header">
+    <span class="tag">06 - NETWORKING</span>
+    <img src="/logo" alt="Logo" style="height:22px; vertical-align:middle; opacity:0.92;">
+  </div>
+  <div class="slide-body">
+    <h2>NETWORKING AND REMOTE ACCESS</h2>
+    <div class="three-col" style="margin-top:16px;">
+      <div class="box">
+        <h3>1. Static IP</h3>
+        <p style="line-height:1.6;">Give your server a static IP and reserve it on your home router so its address never changes.</p>
+      </div>
+      <div class="box">
+        <h3>2. Port forwarding</h3>
+        <p style="line-height:1.6;">Only forward what you have to, to a service you keep updated.</p>
+        <p style="margin-top:6px; line-height:1.6;"><span class="hl-red">Never expose:</span></p>
+        <div>
+          <span class="pill amber">SSH 22</span>
+          <span class="pill amber">RDP 3389</span>
+          <span class="pill amber">SMB 445</span>
+          <span class="pill amber">DB 3306 / 5432</span>
+          <span class="pill amber">Proxmox 8006</span>
+        </div>
+        <p style="margin-top:6px; line-height:1.6;"><span class="hl-green">Usual exception:</span> web 80 / 443, through one reverse proxy.</p>
+      </div>
+      <div class="box">
+        <h3>3. Remote access</h3>
+        <p style="line-height:1.6;">Skip port forwarding entirely with a tunnel or VPN:</p>
+        <div style="margin-top:6px;">
+          <span class="pill">Tailscale</span>
+          <span class="pill">WireGuard</span>
+          <span class="pill">Cloudflare Tunnel</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-bar" style="margin-top:14px;">
+      <span class="hl-amber">My lab:</span> Tailscale with an exit node whose DNS runs through Pi-hole, so I get ad blocking anywhere. HAProxy handles incoming HTTP for my web server.
+    </div>
+  </div>
+</div>

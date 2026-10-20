@@ -7,7 +7,10 @@ static/
   app.js                  slide navigation and particle background
   style.css               HacKSU deck design
 templates/
-  slides/                 slide files
+  slides/                 template layouts to copy from
+    homelab/              homelab half (Ian)
+    ai/                   local AI half (Meheraj)
+    closing.html          shared Q&A slide
   base.html               page shell, nav bar, logo
   index.html              slide order
   notes.html              speaker notes and run of show
