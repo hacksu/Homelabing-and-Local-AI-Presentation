@@ -3,9 +3,13 @@
 A HacKSU workshop deck on the basics of homelabbing, using a real homelab as the running example. Built on the HacKSU presentation template.
 
 ```text
+.github/workflows/
+  pages.yml               builds and deploys to GitHub Pages
 static/
   app.js                  slide navigation and particle background
   style.css               HacKSU deck design
+  HacKSU.png              logo
+  images/                 slide images
 templates/
   slides/                 template layouts to copy from
     homelab/              homelab half (Ian)
@@ -14,7 +18,8 @@ templates/
   base.html               page shell, nav bar, logo
   index.html              slide order
   notes.html              speaker notes and run of show
-app.py                    base app, three routes: deck, notes, logo
+app.py                    base app, two routes: deck, notes
+build.py                  renders the deck to static HTML in dist/
 OUTLINE.md                slide-by-slide content outline
 pyproject.toml            project metadata and dependencies (uv)
 README.md                 documentation
@@ -41,5 +46,19 @@ To run the app:
 To add a dependency, use `uv add <package>` rather than editing `pyproject.toml` by hand, so `uv.lock` stays in sync.
 
 To change the order of slides, navigate to `templates/index.html`, and reorder using `{% include %}`
+
+Use relative paths (`static/...`, no leading slash) for images and other files, so the deck also works on GitHub Pages.
+
+## GitHub Pages
+
+Every push to the default branch builds the deck and publishes it to GitHub Pages. After forking, do this once:
+
+1. **Actions** tab: enable workflows (GitHub disables them on forks).
+2. **Settings → Pages**: set Source to **GitHub Actions**.
+3. **Actions** tab: run **Deploy to GitHub Pages** manually, or push a commit.
+
+The deck is published at `https://<username>.github.io/<repo-name>/` and the notes at `.../notes.html`.
+
+To build locally: `uv run build.py`, then open `dist/index.html`.
 
 Design and plumbing lifted from the polyglot programming deck.
