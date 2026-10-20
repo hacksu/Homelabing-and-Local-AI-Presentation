@@ -19,9 +19,9 @@ README.md                 documentation
 
 A Flask app on port 5174, managed with [uv](https://docs.astral.sh/uv/).
 
-Install uv (once):
+Run the commands below from a Linux shell (WSL on Windows, or macOS/Linux). If uv isn't installed yet:
 
-`powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"` on Windows, or `curl -LsSf https://astral.sh/uv/install.sh | sh` on macOS/Linux.
+`curl -LsSf https://astral.sh/uv/install.sh | sh`
 
 Install dependencies:
 
